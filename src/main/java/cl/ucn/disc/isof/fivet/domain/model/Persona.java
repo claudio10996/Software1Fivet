@@ -73,5 +73,47 @@ public class Persona extends BaseModel {
         VETERINARIO,
     }
 
+    /**
+     * Correo electrónico
+     *
+     */
+    @Getter
+    @Setter
+    private String email;
+
+    /**
+     * Teléfono Móvil
+     *
+     */
+    @Getter
+    @Setter
+    private String movil;
+
+    /**
+     * Dirección de la persona
+     *
+     */
+    @Getter
+    @Setter
+    @NotNull
+    @NotEmpty
+    private String direccion;
+
+    /**
+     * Teléfono Fijo
+     *
+     */
+    @Getter
+    @Setter
+    private String fijo;
+
+    /**
+     * Listado de controles que ha realizado (sólo si es veterinario)
+     */
+    @Getter
+    @ManyToMany
+    @OrderBy("id")
+    private List<Control> controles;
+
 
 }

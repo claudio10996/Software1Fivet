@@ -3,11 +3,13 @@ package cl.ucn.disc.isof.fivet.domain.model;
 import com.avaje.ebean.annotation.EnumValue;
 import com.durrutia.ebean.BaseModel;
 import lombok.*;
-
+import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Clase que representa a un Paciente de la veterinaria.
@@ -78,5 +80,27 @@ public class Paciente extends BaseModel {
         @EnumValue("Indeterminado")
         INDETERMINADO,
     }
+    /**
+     * Especie
+     */
+    @Getter
+    @Setter
+    private String especie;
+
+    /**
+     * Listado de controles del paciente
+     */
+    @Getter
+    @ManyToMany
+    @OrderBy("id")
+    private List<Control> controles;
+
+    /**
+     * Listado de Personas que son dueños del paciente
+     */
+    @Getter
+    @ManyToMany
+    @OrderBy("rut")
+    private List<Persona> dueños;
 
 }
