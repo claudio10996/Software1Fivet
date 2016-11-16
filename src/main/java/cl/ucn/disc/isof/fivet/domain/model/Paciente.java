@@ -103,4 +103,9 @@ public class Paciente extends BaseModel {
     @OrderBy("rut")
     private List<Persona> dueños;
 
+    public void addControl(Control control){
+        this.controles.add(control);
+    }
+
+
 }
