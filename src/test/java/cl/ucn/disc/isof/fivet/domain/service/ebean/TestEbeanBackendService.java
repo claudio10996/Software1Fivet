@@ -77,6 +77,10 @@ public class TestEbeanBackendService {
                     .nombre(nombre)
                     .rut(rut)
                     .password("durrutia123")
+                    .email("ja@gmail.com")
+                    .direccion("calle")
+                    .movil("12")
+                    .fijo("122")
                     .tipo(Persona.Tipo.CLIENTE)
                     .build();
 

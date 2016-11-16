@@ -91,7 +91,7 @@ public class Paciente extends BaseModel {
      * Listado de controles del paciente
      */
     @Getter
-    @ManyToMany
+    //@OneToMany
     @OrderBy("id")
     private List<Control> controles;
 
@@ -103,6 +103,10 @@ public class Paciente extends BaseModel {
     @OrderBy("rut")
     private List<Persona> dueños;
 
+    /**
+     * Agregar un control al paciente
+     * @param control
+     */
     public void addControl(Control control){
         this.controles.add(control);
     }
