@@ -52,6 +52,8 @@ public class EbeanBackendService implements BackendService {
         config.addClass(Paciente.class);
         config.addClass(Paciente.Sexo.class);
 
+
+
         // http://ebean-orm.github.io/docs/query/autotune
         config.getAutoTuneConfig().setProfiling(false);
         config.getAutoTuneConfig().setQueryTuning(false);
@@ -131,7 +133,7 @@ public class EbeanBackendService implements BackendService {
                .findList();
         List<Control> controlesVeterinario= Lists.newArrayList();
         for (Control control:controles) {
-            if(control.getVeterinario().getRut().equals(rutVeterinario)){
+            if(control.getRutVeterinario().equals(rutVeterinario)){
                 controlesVeterinario.add(control);
             }
         }
@@ -162,10 +164,8 @@ public class EbeanBackendService implements BackendService {
      */
     @Override
     public void agregarControl(Control control, Integer numeroPaciente) {
-        Paciente paciente=getPaciente(numeroPaciente);
-        paciente.addControl(control);
+        control.setNumeroPaciente(numeroPaciente);
         this.ebeanServer.insert(control);
-        this.ebeanServer.update(paciente);
     }
 
     /**

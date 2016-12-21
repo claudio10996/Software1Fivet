@@ -4,10 +4,6 @@ import com.avaje.ebean.annotation.EnumValue;
 import com.durrutia.ebean.BaseModel;
 import lombok.*;
 import javax.persistence.*;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OrderBy;
-import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
 
@@ -89,12 +85,12 @@ public class Paciente extends BaseModel {
 
     /**
      * Listado de controles del paciente
-     */
+     *
     @Getter
     //@OneToMany
     @OrderBy("id")
     private List<Control> controles;
-
+    */
     /**
      * Listado de Personas que son dueños del paciente
      */
@@ -106,10 +102,10 @@ public class Paciente extends BaseModel {
     /**
      * Agregar un control al paciente
      * @param control
-     */
+     *
     public void addControl(Control control){
         this.controles.add(control);
     }
-
+    */
 
 }

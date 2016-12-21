@@ -1,7 +1,9 @@
 package cl.ucn.disc.isof.fivet.domain.service.ebean;
+import java.util.ArrayList;
 import java.util.List;
 import cl.ucn.disc.isof.fivet.domain.model.Persona;
 import cl.ucn.disc.isof.fivet.domain.model.Paciente;
+
 import cl.ucn.disc.isof.fivet.domain.model.Control;
 import cl.ucn.disc.isof.fivet.domain.service.BackendService;
 import com.google.common.base.Stopwatch;
@@ -180,12 +182,44 @@ public class TestEbeanBackendService {
     @Test
     public void TestControles(){
 
-        String id ="C001";
-        String nombre ="fifi";
+        String idCon ="C001";
+        int numeroPac=001;
+        String nombrePac ="fifi";
+        String rutVet="1-1";
+        String nombreVet="Este es mi nombre";
+        //insertarPersona
+        final Persona persona = Persona.builder()
+                .nombre(nombreVet)
+                .rut(rutVet)
+                .password("durrutia123")
+                .email("ja@gmail.com")
+                .direccion("calle")
+                .movil("12")
+                .fijo("122")
+                .tipo(Persona.Tipo.VETERINARIO)
+                .build();
+
+        persona.insert();
+
+        List <Persona> dueños= new ArrayList<Persona>();
+        dueños.add(persona);
+        //insertarPaciente
+        final Paciente paciente = Paciente.builder()
+                .nombre(nombrePac)
+                .numero(numeroPac)
+                .fechaNacimiento(new Date(2005,12,22))
+                .raza("chiguagua")
+                .sexo(Paciente.Sexo.HEMBRA)
+                .especie("perro")
+                .color("café")
+                .dueños(dueños)
+                .build();
+
+        paciente.insert();
         // Insert into backend
         {
             final Control control = Control.builder()
-                    .idC(id)
+                    .idC(idCon)
                     .fecha(new Date(2005,12,22))
                     .proximoControl(new Date(2006,01,22))
                     .temperatura(" 35°C")
@@ -193,9 +227,18 @@ public class TestEbeanBackendService {
                     .altura("20 cm")
                     .diagnostico("Infección de herida")
                     .nota(1)
+                    .rutVeterinario(persona.getRut())
                     .build();
 
-            backendService.agregarControl(control,001);
+            backendService.agregarControl(control,paciente.getNumero());
+        }
+        //Get from backend v1
+        {
+            final List <Control> controles= backendService.getControlesVeterinario(persona.getRut());
+            log.debug("Controles founded: {}", controles);
+            Assert.assertNotNull("Can't find Controles", controles);
+            Assert.assertTrue("Hay más de un paciente con ese nombre, y no debería",1==controles.size());
+            Assert.assertEquals("Numeros distintos!", numeroPac, controles.get(0).getNumeroPaciente());
         }
 
     }

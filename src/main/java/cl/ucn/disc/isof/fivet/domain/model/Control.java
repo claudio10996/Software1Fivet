@@ -26,7 +26,6 @@ public class Control extends BaseModel{
      */
     @Getter
     @NotEmpty
-    @Column(nullable = false)
     private String idC;
 
     /**
@@ -34,7 +33,6 @@ public class Control extends BaseModel{
      */
     @Getter
     @NotEmpty
-    @Column(nullable = false)
     private Date fecha;
 
     /**
@@ -42,7 +40,6 @@ public class Control extends BaseModel{
      */
     @Getter
     @NotEmpty
-    @Column(nullable = false)
     private Date proximoControl;
 
     /**
@@ -50,7 +47,6 @@ public class Control extends BaseModel{
      */
     @Getter
     @NotEmpty
-    @Column(nullable = false)
     private String temperatura;
 
     /**
@@ -58,7 +54,6 @@ public class Control extends BaseModel{
      */
     @Getter
     @NotEmpty
-    @Column(nullable = false)
     private String peso;
 
     /**
@@ -66,7 +61,6 @@ public class Control extends BaseModel{
      */
     @Getter
     @NotEmpty
-    @Column(nullable = false)
     private String altura;
 
     /**
@@ -74,7 +68,6 @@ public class Control extends BaseModel{
      */
     @Getter
     @NotEmpty
-    @Column(nullable = false)
     private String diagnostico;
 
     /**
@@ -82,29 +75,27 @@ public class Control extends BaseModel{
      */
     @Getter
     @NotEmpty
-    @Column(nullable = false)
     private int nota;
 
     /**
      * Listado de exámenes que se solicitan
      */
     @Getter
-    @ManyToMany
+    @OneToMany
     private List<Examen> examenes;
 
     /**
      * El paciente al que se le hace control
      */
     @Getter
+    @Setter
     @NotEmpty
-    @Column(nullable = false)
-    private Paciente paciente;
+    private int numeroPaciente;
 
     /**
      * El veterinario que realiza el control
      */
     @Getter
     @NotEmpty
-    @Column(nullable = false)
-    private Persona veterinario;
+    private String rutVeterinario;
 }
