@@ -22,9 +22,25 @@ public class Examen extends BaseModel{
 
 
     /**
+     * Nombre del examen
+     */
+    @Getter
+    @NotEmpty
+    private String nombre;
+
+
+
+    /**
      * Fecha del examen
      */
     @Getter
     @NotEmpty
     private Date fecha;
+
+    /**
+     * Resultado del examen
+     */
+    @Getter
+    @NotEmpty
+    private String resultado;
 }
