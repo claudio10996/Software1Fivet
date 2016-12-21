@@ -64,21 +64,21 @@ public class Control extends BaseModel{
     private String altura;
 
     /**
-     * Diagnóstico del paciente
+     * Diagnostico del paciente
      */
     @Getter
     @NotEmpty
     private String diagnostico;
 
     /**
-     * Nota
+     * Nota optativa del control
      */
     @Getter
     @NotEmpty
-    private int nota;
+    private String nota;
 
     /**
-     * Listado de exámenes que se solicitan
+     * Listado de examenes que se solicitan
      */
     @Getter
     @ManyToMany

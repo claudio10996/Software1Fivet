@@ -74,7 +74,7 @@ public class Persona extends BaseModel {
     }
 
     /**
-     * Correo electrónico
+     * Correo electronico
      *
      */
     @Getter
@@ -82,7 +82,7 @@ public class Persona extends BaseModel {
     private String email;
 
     /**
-     * Teléfono Móvil
+     * Telefono Movil
      *
      */
     @Getter
@@ -90,7 +90,7 @@ public class Persona extends BaseModel {
     private String movil;
 
     /**
-     * Dirección de la persona
+     * Direccion de la persona
      *
      */
     @Getter
@@ -100,7 +100,7 @@ public class Persona extends BaseModel {
     private String direccion;
 
     /**
-     * Teléfono Fijo
+     * Telefono Fijo
      *
      */
     @Getter
@@ -108,7 +108,7 @@ public class Persona extends BaseModel {
     private String fijo;
 
     /**
-     * Listado de controles que ha realizado (sólo si es veterinario)
+     * Listado de controles que ha realizado (solo si es veterinario)
      *
      *
     @Getter

@@ -150,8 +150,8 @@ public class TestEbeanBackendService {
             Assert.assertNotNull("Can't find Paciente", paciente);
             Assert.assertNotNull("Objeto sin id", paciente.getId());
             Assert.assertEquals("Nombre distintos!", nombre, paciente.getNombre());//Assert.assertEquals("Nombre distintos!", rut, persona.getNombre());
-            Assert.assertNotNull("Dueños null", paciente.getDueños());
-            Assert.assertTrue("Dueños != 0", paciente.getDueños().size() == 0);
+            Assert.assertNotNull("Dueños null", paciente.getDuenios());
+            Assert.assertTrue("Dueños != 0", paciente.getDuenios().size() == 0);
 
             // Update nombre
             paciente.setNombre(nombre); //persona.setNombre(nombre + nombre);
@@ -212,7 +212,7 @@ public class TestEbeanBackendService {
                 .sexo(Paciente.Sexo.HEMBRA)
                 .especie("perro")
                 .color("café")
-                .dueños(dueños)
+                .duenios(dueños)
                 .build();
 
         paciente.insert();
@@ -226,7 +226,7 @@ public class TestEbeanBackendService {
                     .peso("2 kg")
                     .altura("20 cm")
                     .diagnostico("Infección de herida")
-                    .nota(1)
+                    .nota("Se portó bien.")
                     .rutVeterinario(persona.getRut())
                     .build();
 

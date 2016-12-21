@@ -92,12 +92,12 @@ public class Paciente extends BaseModel {
     private List<Control> controles;
     */
     /**
-     * Listado de Personas que son dueños del paciente
+     * Listado de Personas que son duenios del paciente
      */
     @Getter
     @ManyToMany
     @OrderBy("rut")
-    private List<Persona> dueños;
+    private List<Persona> duenios;
 
     /**
      * Agregar un control al paciente
