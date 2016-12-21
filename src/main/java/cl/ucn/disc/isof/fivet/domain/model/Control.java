@@ -5,7 +5,7 @@ import com.avaje.ebean.annotation.EnumValue;
 import com.durrutia.ebean.BaseModel;
 import lombok.*;
 import org.hibernate.validator.constraints.NotEmpty;
-
+import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
 @Builder
 @Entity
 @Table
-public class Control {
+public class Control extends BaseModel{
 
     /**
      * Identificador del control
@@ -27,7 +27,7 @@ public class Control {
     @Getter
     @NotEmpty
     @Column(nullable = false)
-    private String id;
+    private String idC;
 
     /**
      * Fecha del control
@@ -35,7 +35,7 @@ public class Control {
     @Getter
     @NotEmpty
     @Column(nullable = false)
-    private String fecha;
+    private Date fecha;
 
     /**
      * Fecha del proximo control
@@ -43,7 +43,7 @@ public class Control {
     @Getter
     @NotEmpty
     @Column(nullable = false)
-    private String proximoControl;
+    private Date proximoControl;
 
     /**
      * Temperatura del paciente

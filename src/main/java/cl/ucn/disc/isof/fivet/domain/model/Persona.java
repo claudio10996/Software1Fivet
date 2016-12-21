@@ -110,10 +110,12 @@ public class Persona extends BaseModel {
     /**
      * Listado de controles que ha realizado (sólo si es veterinario)
      *
+     *
     @Getter
     @ManyToMany
     @OrderBy("id")
     private List<Control> controles;
     */
+
 
 }

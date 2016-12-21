@@ -2,6 +2,7 @@ package cl.ucn.disc.isof.fivet.domain.service.ebean;
 import java.util.List;
 import cl.ucn.disc.isof.fivet.domain.model.Persona;
 import cl.ucn.disc.isof.fivet.domain.model.Paciente;
+import cl.ucn.disc.isof.fivet.domain.model.Control;
 import cl.ucn.disc.isof.fivet.domain.service.BackendService;
 import com.google.common.base.Stopwatch;
 import lombok.extern.slf4j.Slf4j;
@@ -84,7 +85,7 @@ public class TestEbeanBackendService {
                     .direccion("calle")
                     .movil("12")
                     .fijo("122")
-                    .tipo(Persona.Tipo.CLIENTE)
+                    .tipo(Persona.Tipo.VETERINARIO)
                     .build();
 
             persona.insert();
@@ -163,6 +164,38 @@ public class TestEbeanBackendService {
             Assert.assertNotNull("Can't find Pacientes", pacientes);
             Assert.assertTrue("Hay más de un paciente con ese nombre, y no debería",1==pacientes.size());
             Assert.assertEquals("Nombres distintos!", nombre, pacientes.get(0).getNombre());
+        }
+
+        // Get from backend v3
+        {
+            final List<Paciente> pacientes = backendService.getPacientes();
+            log.debug("Pacientes founded: {}", pacientes);
+            Assert.assertNotNull("Can't find Pacientes", pacientes);
+            Assert.assertTrue("Hay más de un paciente, y no debería",1==pacientes.size());
+            Assert.assertEquals("Nombres distintos!", nombre, pacientes.get(0).getNombre());
+        }
+
+    }
+
+    @Test
+    public void TestControles(){
+
+        String id ="C001";
+        String nombre ="fifi";
+        // Insert into backend
+        {
+            final Control control = Control.builder()
+                    .idC(id)
+                    .fecha(new Date(2005,12,22))
+                    .proximoControl(new Date(2006,01,22))
+                    .temperatura(" 35°C")
+                    .peso("2 kg")
+                    .altura("20 cm")
+                    .diagnostico("Infección de herida")
+                    .nota(1)
+                    .build();
+
+            backendService.agregarControl(control,001);
         }
 
     }
