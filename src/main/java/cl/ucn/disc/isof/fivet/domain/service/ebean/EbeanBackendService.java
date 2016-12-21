@@ -1,8 +1,6 @@
 package cl.ucn.disc.isof.fivet.domain.service.ebean;
 
-import cl.ucn.disc.isof.fivet.domain.model.Control;
-import cl.ucn.disc.isof.fivet.domain.model.Paciente;
-import cl.ucn.disc.isof.fivet.domain.model.Persona;
+import cl.ucn.disc.isof.fivet.domain.model.*;
 import cl.ucn.disc.isof.fivet.domain.service.BackendService;
 import com.avaje.ebean.EbeanServer;
 import com.avaje.ebean.EbeanServerFactory;
@@ -51,6 +49,9 @@ public class EbeanBackendService implements BackendService {
 
         config.addClass(Paciente.class);
         config.addClass(Paciente.Sexo.class);
+
+        config.addClass(Control.class);
+        config.addClass(Examen.class);
 
 
 

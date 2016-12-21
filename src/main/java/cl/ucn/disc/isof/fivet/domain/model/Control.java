@@ -81,7 +81,7 @@ public class Control extends BaseModel{
      * Listado de exámenes que se solicitan
      */
     @Getter
-    @OneToMany
+    @ManyToMany
     private List<Examen> examenes;
 
     /**
